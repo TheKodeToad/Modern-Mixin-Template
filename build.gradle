@@ -30,7 +30,9 @@ for (def runConfig : net.fabricmc.loom.LoomGradleExtension.get(project).getRunCo
 dependencies {
 	minecraft "com.mojang:minecraft:$minecraftVersion"
 	mappings loom.officialMojangMappings()
-	implementation "com.github.heni123321:LegacyLauncher:ac106bbe00"
+	implementation("com.github.heni123321:LegacyLauncher:ac106bbe00") {
+		transitive = false
+	}
 	implementation "org.spongepowered:mixin:0.8.5"
 
 	implementation "org.ow2.asm:asm:9.2"
@@ -47,4 +49,8 @@ dependencies {
 
 remapJar {
 	targetNamespace = "official"
+}
+
+tasks.withType(JavaCompile).configureEach {
+	it.options.release = 17
 }

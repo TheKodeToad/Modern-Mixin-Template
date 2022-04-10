@@ -26,6 +26,19 @@ public class Tweaker implements ITweaker {
 	public void acceptOptions(List<String> args, File gameDir, File assetsDir, String version) {
 		this.args.addAll(args);
 
+		// these arguments are stolen by LaunchWrapper
+		// pass them back to Minecraft
+
+		if (gameDir != null) {
+			this.args.add("--gameDir");
+			this.args.add(gameDir.getPath());
+		}
+
+		if (assetsDir != null) {
+			this.args.add("--assetsDir");
+			this.args.add(assetsDir.toString());
+		}
+
 		// add supplied version to arguments...
 		if (version != null) {
 			this.args.add("--version");
