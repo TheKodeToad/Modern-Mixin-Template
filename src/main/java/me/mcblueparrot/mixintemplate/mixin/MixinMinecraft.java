@@ -16,9 +16,4 @@ public class MixinMinecraft {
 		return "Mixin Client 1.0.0 | Minecraft 1.18.2";
 	}
 
-	@Inject(method = "getInstance", at = @At("HEAD"))
-	private static void preGetInstance(CallbackInfoReturnable<Minecraft> cir) {
-		System.out.println("Hello");
-	}
-
 }
