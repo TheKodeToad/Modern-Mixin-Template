@@ -57,7 +57,7 @@ public class Tweaker implements ITweaker {
 
 		// add your mixin configurations here
 		// to ensure that they can modify classes
-		Mixins.addConfiguration("mixintemplate.mixins.json");
+		Mixins.addConfiguration("mixin-template.mixins.json");
 
 		MixinEnvironment environment = MixinEnvironment.getDefaultEnvironment();
 
