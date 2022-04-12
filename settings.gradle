@@ -1,1 +1,12 @@
+pluginManagement {
+rootProject.name = "mixin-template"
+	repositories {
+		maven {
+			url "https://maven.fabricmc.net/"
+		}
+		mavenCentral()
+		gradlePluginPortal()
+	}
+}
+
 rootProject.name = "mixin-template"

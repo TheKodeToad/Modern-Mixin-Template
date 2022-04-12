@@ -1,21 +1,8 @@
 import net.fabricmc.loom.LoomGradleExtension
 
-buildscript {
-	repositories {
-		maven {
-			url "https://jitpack.io"
-		}
-		maven {
-			url "https://maven.fabricmc.net"
-		}
-		mavenCentral()
-	}
-	dependencies {
-		classpath "com.github.TheKodeToad.fabric-loom:fabric-loom:namedofficial-SNAPSHOT"
-	}
+plugins {
+	id "fabric-loom" version "0.11-SNAPSHOT"
 }
-
-apply plugin: "fabric-loom"
 
 // Use Java 18 if you prefer
 // 17 is the absolute minimum
@@ -63,16 +50,6 @@ dependencies {
 	annotationProcessor "org.ow2.asm:asm-commons:$asmVersion"
 	annotationProcessor "org.ow2.asm:asm-tree:$asmVersion"
 	annotationProcessor "org.ow2.asm:asm-util:$asmVersion"
-}
-
-remapJar {
-	targetNamespace = "official"
-}
-
-loom {
-	mixin {
-		useLegacyMixinAp = true
-	}
 }
 
 tasks.withType(JavaCompile).configureEach {

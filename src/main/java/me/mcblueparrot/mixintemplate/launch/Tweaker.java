@@ -61,9 +61,8 @@ public class Tweaker implements ITweaker {
 
 		MixinEnvironment environment = MixinEnvironment.getDefaultEnvironment();
 
-		// default to the vanilla obfuscated classes
 		if (environment.getObfuscationContext() == null) {
-			environment.setObfuscationContext("named:official");
+			environment.setObfuscationContext("named:intermediary");
 		}
 
 		environment.setSide(Side.CLIENT);
