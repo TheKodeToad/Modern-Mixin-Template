@@ -1,6 +1,21 @@
-plugins {
-	id "fabric-loom" version "0.11-SNAPSHOT"
+import net.fabricmc.loom.LoomGradleExtension
+
+buildscript {
+	repositories {
+		maven {
+			url "https://jitpack.io"
+		}
+		maven {
+			url "https://maven.fabricmc.net"
+		}
+		mavenCentral()
+	}
+	dependencies {
+		classpath "com.github.TheKodeToad.fabric-loom:fabric-loom:namedofficial-SNAPSHOT"
+	}
 }
+
+apply plugin: "fabric-loom"
 
 // Use Java 18 if you prefer
 // 17 is the absolute minimum
@@ -8,7 +23,7 @@ sourceCompatibility = 17
 targetCompatibility = 17
 
 def minecraftVersion = "1.18.2"
-def asmVersion = "1.18.2"
+def asmVersion = "9.2"
 def mainClass = "me.mcblueparrot.mixintemplate.launch.Main"
 
 version "1.0.0"
@@ -23,7 +38,7 @@ repositories {
 	}
 }
 
-for (def runConfig : net.fabricmc.loom.LoomGradleExtension.get(project).getRunConfigs()) {
+for (def runConfig : LoomGradleExtension.get(project).getRunConfigs()) {
 	runConfig.defaultMainClass mainClass
 }
 
@@ -35,20 +50,29 @@ dependencies {
 	}
 	implementation "org.spongepowered:mixin:0.8.5"
 
-	implementation "org.ow2.asm:asm:9.2"
-	implementation "org.ow2.asm:asm-analysis:9.2"
-	implementation "org.ow2.asm:asm-commons:9.2"
-	implementation "org.ow2.asm:asm-tree:9.2"
-	implementation "org.ow2.asm:asm-util:9.2"
-	annotationProcessor "org.ow2.asm:asm:9.2"
-	annotationProcessor "org.ow2.asm:asm-analysis:9.2"
-	annotationProcessor "org.ow2.asm:asm-commons:9.2"
-	annotationProcessor "org.ow2.asm:asm-tree:9.2"
-	annotationProcessor "org.ow2.asm:asm-util:9.2"
+	implementation "com.github.TheKodeToad.fabric-loom:fabric-loom:namedofficial-SNAPSHOT"
+
+	implementation "org.ow2.asm:asm:$asmVersion"
+	implementation "org.ow2.asm:asm-analysis:$asmVersion"
+	implementation "org.ow2.asm:asm-commons:$asmVersion"
+	implementation "org.ow2.asm:asm-tree:$asmVersion"
+	implementation "org.ow2.asm:asm-util:$asmVersion"
+
+	annotationProcessor "org.ow2.asm:asm:$asmVersion"
+	annotationProcessor "org.ow2.asm:asm-analysis:$asmVersion"
+	annotationProcessor "org.ow2.asm:asm-commons:$asmVersion"
+	annotationProcessor "org.ow2.asm:asm-tree:$asmVersion"
+	annotationProcessor "org.ow2.asm:asm-util:$asmVersion"
 }
 
 remapJar {
 	targetNamespace = "official"
+}
+
+loom {
+	mixin {
+		useLegacyMixinAp = true
+	}
 }
 
 tasks.withType(JavaCompile).configureEach {
