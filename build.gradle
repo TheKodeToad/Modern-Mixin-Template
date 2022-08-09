@@ -1,7 +1,7 @@
 import net.fabricmc.loom.LoomGradleExtension
 
 plugins {
-	id "fabric-loom" version "0.11-SNAPSHOT"
+	id "fabric-loom" version "0.13-SNAPSHOT"
 }
 
 // Use Java 18 if you prefer
@@ -9,7 +9,7 @@ plugins {
 sourceCompatibility = 17
 targetCompatibility = 17
 
-def minecraftVersion = "1.18.2"
+def minecraftVersion = "1.19.2"
 def asmVersion = "9.2"
 def mainClass = "me.mcblueparrot.mixintemplate.launch.Main"
 
@@ -36,8 +36,6 @@ dependencies {
 		transitive = false
 	}
 	implementation "org.spongepowered:mixin:0.8.5"
-
-	implementation "com.github.TheKodeToad.fabric-loom:fabric-loom:namedofficial-SNAPSHOT"
 
 	implementation "org.ow2.asm:asm:$asmVersion"
 	implementation "org.ow2.asm:asm-analysis:$asmVersion"
