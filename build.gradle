@@ -9,7 +9,7 @@ plugins {
 sourceCompatibility = 17
 targetCompatibility = 17
 
-def minecraftVersion = "1.19.2"
+def minecraftVersion = "1.19.3"
 def asmVersion = "9.2"
 def mainClass = "me.mcblueparrot.mixintemplate.launch.Main"
 
